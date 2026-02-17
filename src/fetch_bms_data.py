@@ -108,7 +108,7 @@ class Config:
     NUMBER_OF_PACKS = get_env_value("NUMBER_OF_PACKS", 1, int)
 
     # Serial Configuration
-    SERIAL_INTERFACE = get_env_value("SERIAL_INTERFACE", "/tmp/vcom0", str)
+    SERIAL_INTERFACE = get_env_value("SERIAL_INTERFACE", "/tmp/USB0", str)
 
     # MQTT Configuration
     MQTT_HOST = get_env_value("MQTT_HOST", "192.168.1.100", str)
@@ -1022,7 +1022,7 @@ def initialize_mqtt() -> mqtt.Client:
 def initialize_serial() -> serial.Serial:
     """Initialize serial connection."""
     try:
-        baudrate = 9600 if Config.NUMBER_OF_PACKS > 1 else 19200
+        baudrate = 19200
         logger.info(
             "Initializing serial interface %s at %s baud",
             Config.SERIAL_INTERFACE,
